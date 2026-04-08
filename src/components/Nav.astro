@@ -1,0 +1,31 @@
+---
+// No Props needed yet
+---
+
+<nav>
+    <div class="nav-content">
+        <a href="/" class="site-title">Jiyong Dev Portfolio</a>
+        <a href="/">Home</a>
+    </div>
+</nav>
+
+<style>
+    nav{
+        border-bottom: 1px solid var(--border);
+        background: var(--bg-card);
+    }
+
+    .nav-content {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 16px var(--grid-gap);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .site-title{
+        font-weight: var(--font-weight-bold);
+        color: var(--text-primary);
+    }
+</style>
