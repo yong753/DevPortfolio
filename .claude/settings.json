@@ -12,7 +12,8 @@
       "Bash(mv \"earthwork-simulator-web/tombSimulator.PNG\" \"earthwork-simulator-web/simulation-view.png\")",
       "Bash(mv \"civil-simulator/캡처.PNG\" \"civil-simulator/desktop-view.png\")",
       "Bash(mv \"refrigeration-panel-drawing-generator/slide03-1.png\" \"refrigeration-panel-drawing-generator/drawing-output.png\")",
-      "Bash(mv \"refrigeration-panel-drawing-generator/slide04-1.png\" \"refrigeration-panel-drawing-generator/panel-layout.png\")"
+      "Bash(mv \"refrigeration-panel-drawing-generator/slide04-1.png\" \"refrigeration-panel-drawing-generator/panel-layout.png\")",
+      "Bash(python3 -c ':*)"
     ],
     "additionalDirectories": [
       "d:\\0.Development\\0.BuisenessAutomation\\0.DevPortfolio\\docs\\superpowers"
