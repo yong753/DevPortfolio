@@ -3,6 +3,7 @@ title: "토공 시뮬레이터 - 데스크탑 MVP"
 description: "토공 작업 현장 진행사항 및 장비 경로 시뮬레이션 데스크탑 버전 MVP. 쉐이더를 통한 메쉬그리드 구현."
 thumbnail: "/DevPortfolio/images/projects/civil-simulator/desktop-view.png"
 techStack: ["Unity", "C#", "MySQL"]
+gallery: ["/DevPortfolio/images/projects/civil-simulator/desktop-view.png"]
 order: 3
 ---
 

@@ -3,6 +3,7 @@ title: "로봇 모션 시뮬레이터"
 description: "가정용 AI 로봇 동작 및 디스플레이 출력 시뮬레이션 에디터. CES 2024 출품작. 발주처: LG전자."
 thumbnail: "/DevPortfolio/images/projects/motion-editor-simulator/motion-editor-view.png"
 techStack: ["Unity", "C#"]
+gallery: ["/DevPortfolio/images/projects/motion-editor-simulator/motion-editor-view.png"]
 order: 13
 ---
 

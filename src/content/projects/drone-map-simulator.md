@@ -1,8 +1,9 @@
 ---
 title: "드론 맵 시뮬레이터"
 description: "드론 촬영 기반 포인트 클라우드 맵 뷰어. LOD 및 자동 최적화로 60FPS 유지."
-thumbnail: "/DevPortfolio/images/projects/drone-map-simulator.webp"
+thumbnail: "/DevPortfolio/images/projects/drone-map-simulator/drone-map-simulator.png"
 techStack: ["Unity", "C#", "Python"]
+gallery: ["/DevPortfolio/images/projects/drone-map-simulator/drone-map-simulator.png"]
 order: 12
 ---
 
