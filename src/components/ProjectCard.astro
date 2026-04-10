@@ -15,7 +15,7 @@ const { title, description, thumbnail, techStack, slug} = Astro.props;
 <article class="card">
     <img src={thumbnail} alt={`Screenshot of ${title}`} />
     <div class="card-body">
-        <a href={`${import.meta.env.BASE_URL}projects/${slug}`} class="card-link">
+        <a href={`${import.meta.env.BASE_URL}/projects/${slug}`} class="card-link">
             <h3>{title}</h3>
         </a>
         <p class="description">{description}</p>
