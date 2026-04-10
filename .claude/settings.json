@@ -1,10 +1,21 @@
 {
   "permissions": {
+    "allow": [
+      "Bash(gh api:*)",
+      "Read(//d/0.Development/0.BuisenessAutomation/0.DevPortfolio/public/images/projects/**)",
+      "Bash(mkdir -p pc-concrete-3d-cad-engine earthwork-simulator-web civil-simulator refrigeration-panel-drawing-generator pc-drawing-project hvac-panel-drawing-addon equipment-simulator modular-furniture-configurator steam-generator-robot-simulator cultural-heritage-gis-simulator motion-editor-simulator)",
+      "Bash(curl -sL -o pc-concrete-3d-cad-engine/slide06-1.jpg __TRACKED_VAR__/pc-concrete-3d-cad-engine/slide06-1.jpg)",
+      "Bash(curl -sL -o earthwork-simulator-web/tombSimulator.PNG __TRACKED_VAR__/earthwork-simulator-web/tombSimulator.PNG)",
+      "Bash(curl -sL -o civil-simulator/캡처.PNG __TRACKED_VAR__/civil-simulator/%EC%BA%A1%EC%B2%98.PNG)",
+      "Bash(curl -sL -o refrigeration-panel-drawing-generator/slide03-1.png __TRACKED_VAR__/refrigeration-panel-drawing-generator/slide03-1.png)",
+      "Bash(mv \"pc-concrete-3d-cad-engine/slide06-1.jpg\" \"pc-concrete-3d-cad-engine/3d-modeling-view.jpg\")",
+      "Bash(mv \"earthwork-simulator-web/tombSimulator.PNG\" \"earthwork-simulator-web/simulation-view.png\")",
+      "Bash(mv \"civil-simulator/캡처.PNG\" \"civil-simulator/desktop-view.png\")",
+      "Bash(mv \"refrigeration-panel-drawing-generator/slide03-1.png\" \"refrigeration-panel-drawing-generator/drawing-output.png\")",
+      "Bash(mv \"refrigeration-panel-drawing-generator/slide04-1.png\" \"refrigeration-panel-drawing-generator/panel-layout.png\")"
+    ],
     "additionalDirectories": [
       "d:\\0.Development\\0.BuisenessAutomation\\0.DevPortfolio\\docs\\superpowers"
-    ],
-    "allow": [
-      "Bash(gh api:*)"
     ]
   }
 }

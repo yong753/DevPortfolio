@@ -6,15 +6,23 @@ interface Props {
     description: string;
     thumbnail: string;
     techStack: string[];
+    gallery?: string[];
     githubUrl?: string;
     liveUrl?: string;
 }
 
-const { title, description, thumbnail, techStack, githubUrl, liveUrl } = Astro.props;
+const { title, description, thumbnail, techStack, gallery, githubUrl, liveUrl } = Astro.props;
 ---
 
 <div class="detail">
     <img src={thumbnail} alt={`screenshot of ${title}`} />
+    {gallery && gallery.length > 0 && (
+        <div class="gallery">
+            {gallery.map((src, i) => (
+                <img src={src} alt={`${title} screenshot ${i + 1}`} />
+            ))}
+        </div>
+    )}
     <div class="info">
         <h1>{title}</h1>
         <p class="description">{description}</p>
@@ -41,6 +49,20 @@ const { title, description, thumbnail, techStack, githubUrl, liveUrl } = Astro.p
         width: 100%;
         max-height: 40vh;
         object-fit: cover;
+    }
+
+    .gallery {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 0 var(--grid-gap);
+        margin-top: 12px;
+    }
+
+    .gallery img {
+        max-height: 50vh;
+        border-radius: 8px;
+        object-fit: contain;
     }
 
     .info {
