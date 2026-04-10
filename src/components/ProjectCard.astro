@@ -1,0 +1,83 @@
+---
+import TechTag from "./TechTag.astro";
+
+interface Props{
+    title: string;
+    description: string;
+    thumbnail: string;
+    techStack: string[];
+    slug: string;
+}
+
+const { title, description, thumbnail, techStack, slug} = Astro.props;
+---
+
+<article class="card">
+    <img src={thumbnail} alt={`Screenshot of ${title}`} />
+    <div class="card-body">
+        <a href={`/projects/${slug}`}>
+            <h3>{title}</h3>
+        </a>
+        <p class="description">{description}</p>
+        <div class="tags">
+            {techStack.map(tech => <TechTag label={tech} />)}
+        </div>
+    </div>
+</article>
+
+<style>
+    .card{
+        position: relative;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .card:hover{
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        transform: translateV(-2px);
+    }
+
+    img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+
+    .card-body{
+        padding: 16px;
+    }
+
+    .card-link {
+        color: var(--text-primary);
+    }
+
+    .card-link::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    .description{
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+        margin-top: 4px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .tags{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 12px;
+    }
+</style>

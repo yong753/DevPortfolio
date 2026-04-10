@@ -1,7 +1,47 @@
 ---
+import { getCollection } from "astro:content"
 import BaseLayout from "../layouts/BaseLayout.astro"
+import Hero from "../components/Hero.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const projects = await getCollection('projects');
+projects.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout frontmatter={{title: "Home", description: "Developer portfolio"}}>
-	<h1>It works!</h1>
+	<Hero />
+	<section class="projects">
+		{projects.map(p => (
+			<ProjectCard
+				title={p.data.title}
+				description={p.data.description}
+				thumbnail={p.data.thumbnail}
+				techStack={p.data.techStack}
+				slug={p.id}
+			/>
+		))}
+	</section>
 </BaseLayout>
+
+<style>
+	.projects {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 0 var(--grid-gap);
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--grid-gap);
+	}
+
+	@media (max-width: 900px) {
+		.projects {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.projects {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

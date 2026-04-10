@@ -1,0 +1,93 @@
+---
+import TechTag from "./TechTag.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    thumbnail: string;
+    techStack: string[];
+    githubUrl?: string;
+    liveUrl?: string;
+}
+
+const { title, description, thumbnail, techStack, githubUrl, liveUrl } = Astro.props;
+---
+
+<div class="detail">
+    <img src={thumbnail} alt={`screenshot of ${title}`} />
+    <div class="info">
+        <h1>{title}</h1>
+        <p class="description">{description}</p>
+        <div class = "tags">
+            {techStack.map(tech => <TechTag label={tech} />)}
+        </div>
+        <div class="links">
+            {githubUrl && <a href={githubUrl} target="_blank">GitHub</a>}
+            liveUrl && <a href={liveUrl} target="_blank">Live Demo</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .detail {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    img{
+        width: 100%;
+        max-height: 40vh;
+        object-fit: cover;
+    }
+
+    .info {
+        padding: var(--grid-gap);
+        flex: 1;
+        display: felx;
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .description{
+        color: var(--text-secondary);
+        margin-top: 8px;
+        line-height: var(--line-height);
+    }
+
+    .tags{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 16px;
+    }
+
+    .links{
+        display: flex;
+        gap: 12px;
+        margin-top: auto;
+        padding-bottom: var(--grid-gap);
+    }
+
+    .links a {
+        padding: 8px 20px;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.875rem;
+    }
+
+    .links a:first-child {
+        background: var(--accent);
+        color: white;
+    }
+
+    .links a:last-child{
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+    }
+</style>
