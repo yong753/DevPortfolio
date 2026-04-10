@@ -1,6 +1,6 @@
 ---
 title: "PC 콘크리트 도면 설계용 3D CAD 엔진"
-description: "PC 콘크리트 부재 설계를 위한 3D CAD 엔진.
+description: "PC 콘크리트 부재 설계를 위한 3D CAD 엔진."
 thumbnail: "/DevPortfolio/images/projects/pc-concrete-3d-cad-engine/3d-modeling-view.jpg"
 gallery: ["/DevPortfolio/images/projects/pc-concrete-3d-cad-engine/3d-modeling-view.jpg"]
 techStack: ["Unity", ".NET", "C#"]
