@@ -1,9 +1,8 @@
 ---
 title: "토공 시뮬레이터 - 웹"
 description: "토공 작업 현장의 작업 진행사항 및 장비 작업 경로 시뮬레이션. 실제 드론 촬영 데이터를 3D로 재구성하여 시뮬레이션 진행."
-thumbnail: "/DevPortfolio/images/projects/earthwork-simulator-web.webp"
+thumbnail: "/DevPortfolio/images/projects/earthwork-simulator-web/simulation-view.png"
 techStack: ["Unity WebGL", "C#", "Python", "React", "PostgreSQL"]
-gallery: ["/DevPortfolio/images/projects/earthwork-simulator-web/simulation-view.png"]
 order: 2
 ---
 
