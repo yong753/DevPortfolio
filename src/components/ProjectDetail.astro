@@ -6,12 +6,14 @@ interface Props {
     description: string;
     thumbnail: string;
     techStack: string[];
+    features: string[];
+    highlights?: string[];
     gallery: string[];
     githubUrl?: string;
     liveUrl?: string;
 }
 
-const { title, description, thumbnail, techStack, gallery, githubUrl, liveUrl } = Astro.props;
+const { title, description, thumbnail, techStack, features, highlights, gallery, githubUrl, liveUrl } = Astro.props;
 ---
 
 <div class="detail">
@@ -25,10 +27,23 @@ const { title, description, thumbnail, techStack, gallery, githubUrl, liveUrl } 
     <div class="info">
         <h1>{title}</h1>
         <p class="summary">{description}</p>
-        <div class="prose">
-            <slot name="body" />
+        <div class="sections">
+            <div class="section">
+                <h2>주요 기능</h2>
+                <ul>
+                    {features.map(f => <li>{f}</li>)}
+                </ul>
+            </div>
+            {highlights && highlights.length > 0 && (
+                <div class="section">
+                    <h2>특징</h2>
+                    <ul>
+                        {highlights.map(h => <li>{h}</li>)}
+                    </ul>
+                </div>
+            )}
         </div>
-        <div class = "tags">
+        <div class="tags">
             {techStack.map(tech => <TechTag label={tech} />)}
         </div>
         <div class="links">
@@ -98,7 +113,7 @@ const { title, description, thumbnail, techStack, gallery, githubUrl, liveUrl } 
         font-size: 1.75rem;
     }
 
-    .summary{
+    .summary {
         color: var(--text-secondary);
         margin-top: 10px;
         line-height: var(--line-height);
@@ -106,27 +121,26 @@ const { title, description, thumbnail, techStack, gallery, githubUrl, liveUrl } 
         padding-left: 12px;
     }
 
-    .prose {
+    .sections {
         margin-top: 20px;
     }
 
-    .prose :global(h2) {
+    .section {
+        margin-bottom: 20px;
+    }
+
+    .section h2 {
         font-size: 0.85rem;
         font-weight: 700;
         color: var(--text-secondary);
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        margin-top: 24px;
         margin-bottom: 10px;
         padding-bottom: 6px;
         border-bottom: 2px solid var(--accent-light);
     }
 
-    .prose :global(h2:first-child) {
-        margin-top: 0;
-    }
-
-        .prose :global(ul) {
+    .section ul {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -135,7 +149,7 @@ const { title, description, thumbnail, techStack, gallery, githubUrl, liveUrl } 
         gap: 8px;
     }
 
-    .prose :global(li) {
+    .section li {
         background: var(--bg-primary);
         border: 1px solid var(--border);
         border-radius: 6px;
@@ -145,13 +159,12 @@ const { title, description, thumbnail, techStack, gallery, githubUrl, liveUrl } 
         line-height: 1.4;
     }
 
-    .prose :global(h2:first-of-type + ul li) {
+    .section:first-child li {
         background: var(--accent-light);
         border-color: transparent;
         color: var(--accent);
         font-weight: 500;
     }
-
 
     .tags{
         display: flex;
