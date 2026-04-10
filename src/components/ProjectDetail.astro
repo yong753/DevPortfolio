@@ -6,7 +6,7 @@ interface Props {
     description: string;
     thumbnail: string;
     techStack: string[];
-    gallery?: string[];
+    gallery: string[];
     githubUrl?: string;
     liveUrl?: string;
 }
@@ -24,7 +24,10 @@ const { title, description, thumbnail, techStack, gallery, githubUrl, liveUrl } 
     )}
     <div class="info">
         <h1>{title}</h1>
-        <p class="description">{description}</p>
+        <p class="summary">{description}</p>
+        <div class="prose">
+            <slot name="body" />
+        </div>
         <div class = "tags">
             {techStack.map(tech => <TechTag label={tech} />)}
         </div>
@@ -95,11 +98,60 @@ const { title, description, thumbnail, techStack, gallery, githubUrl, liveUrl } 
         font-size: 1.75rem;
     }
 
-    .description{
+    .summary{
         color: var(--text-secondary);
-        margin-top: 8px;
+        margin-top: 10px;
         line-height: var(--line-height);
+        border-left: 3px solid var(--accent);
+        padding-left: 12px;
     }
+
+    .prose {
+        margin-top: 20px;
+    }
+
+    .prose :global(h2) {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-top: 24px;
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+        border-bottom: 2px solid var(--accent-light);
+    }
+
+    .prose :global(h2:first-child) {
+        margin-top: 0;
+    }
+
+        .prose :global(ul) {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .prose :global(li) {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 5px 12px;
+        font-size: 0.875rem;
+        color: var(--text-primary);
+        line-height: 1.4;
+    }
+
+    .prose :global(h2:first-of-type + ul li) {
+        background: var(--accent-light);
+        border-color: transparent;
+        color: var(--accent);
+        font-weight: 500;
+    }
+
 
     .tags{
         display: flex;
