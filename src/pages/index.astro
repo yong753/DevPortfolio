@@ -10,6 +10,8 @@ projects.sort((a, b) => a.data.order - b.data.order);
 
 <BaseLayout frontmatter={{title: "Home", description: "Developer portfolio"}}>
 	<Hero />
+	<div class="divider"/>
+	<p class="portfolio">포트폴리오</p>
 	<section class="projects">
 		{projects.map(p => (
 			<ProjectCard
@@ -32,6 +34,23 @@ projects.sort((a, b) => a.data.order - b.data.order);
 		grid-template-columns: repeat(3, 1fr);
 		gap: var(--grid-gap);
 	}
+
+	.divider{
+		width: 500px;
+		height: 3px;
+		background: var(--text-primary);
+		border-radius: 2px;
+		margin:  auto;
+	}
+
+	.portfolio {
+		color: var(--accent);
+        font-size: 1.1rem;
+        margin-top: 4px;
+		text-align: center;
+		margin: var(--section-padding);
+		font-weight: var(--font-weight-bold);
+    }
 
 	@media (max-width: 900px) {
 		.projects {
