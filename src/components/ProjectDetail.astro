@@ -14,14 +14,20 @@ interface Props {
 }
 
 const { title, description, thumbnail, techStack, features, highlights, gallery, githubUrl, liveUrl } = Astro.props;
+function isVideo(src: string): boolean {
+    return /\.(mp4|webm|ogg)(\?.*)?$/i.test(src);
+}
+
 ---
 
 <div class="detail">
     {gallery && gallery.length > 0 && (
         <div class={"gallery"}>
-            {gallery.map((src, i) => (
-                <img src={src} alt={`${title} screenshot ${i + 1}`} />
-            ))}
+            {gallery.map((src, i) => 
+            isVideo(src)
+            ? <video src={src} controls preload="metadata" aria-label={`${title} video ${i + 1}`} />
+            : <img src={src} alt={`${title} screenshot ${i + 1}`} />
+        )}
         </div>
     )}
     <div class="info">
@@ -100,6 +106,19 @@ const { title, description, thumbnail, techStack, features, highlights, gallery,
         border-radius: 8px;
         border: 2px solid var(--border);
         display: block;
+    }
+
+    .gallery video {
+        height: 40vh;
+        width: auto;
+        max-width: 50%;
+        object-fit: contain;
+        /* break-inside: avoid; */
+        border-radius: 8px;
+        border: 2px solid var(--border);
+        margin-bottom: 12px;
+        background: var(--bg-card);
+        /* display: block; */
     }
 
     .info {
