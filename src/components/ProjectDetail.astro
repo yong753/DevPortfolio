@@ -25,7 +25,7 @@ function isVideo(src: string): boolean {
         <div class={"gallery"}>
             {gallery.map((src, i) => 
             isVideo(src)
-            ? <video src={src} controls preload="metadata" aria-label={`${title} video ${i + 1}`} />
+            ? <video src={src} controls preload="auto" aria-label={`${title} video ${i + 1}`} />
             : <img src={src} alt={`${title} screenshot ${i + 1}`} />
         )}
         </div>

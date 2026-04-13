@@ -15,7 +15,24 @@
       "Bash(mv \"refrigeration-panel-drawing-generator/slide04-1.png\" \"refrigeration-panel-drawing-generator/panel-layout.png\")",
       "Bash(python3 -c ':*)",
       "Read(//d/0.Development/0.BuisenessAutomation/0.DevPortfolio/public/images/projects/*/**)",
-      "Bash(file public/images/projects/pc-concrete-3d-cad-engine/*.jpg)"
+      "Bash(file public/images/projects/pc-concrete-3d-cad-engine/*.jpg)",
+      "Bash(ffprobe -v error -show_entries format=format_name,duration,size -show_entries stream=codec_name,codec_type,width,height \"public/images/projects/modular-furniture-configurator/configurator-video.mp4\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"http://localhost:4321/DevPortfolio/images/projects/modular-furniture-configurator/configurator-video.mp4\")",
+      "Bash(curl -s \"http://localhost:4321/DevPortfolio/projects/modular-furniture-configurator/\")",
+      "Bash(curl -s -I \"http://localhost:4321/DevPortfolio/images/projects/modular-furniture-configurator/configurator-video.mp4\")",
+      "Bash(curl -s -I -H \"Range: bytes=0-1023\" \"http://localhost:4321/DevPortfolio/images/projects/modular-furniture-configurator/configurator-video.mp4\")",
+      "Bash(ffprobe -v trace \"d:/0.Development/0.BuisenessAutomation/0.DevPortfolio/public/images/projects/modular-furniture-configurator/configurator-video.mp4\")",
+      "Bash(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,profile,level,pix_fmt \"d:/0.Development/0.BuisenessAutomation/0.DevPortfolio/public/images/projects/modular-furniture-configurator/configurator-video.mp4\")",
+      "Bash(curl -s -I \"https://yong753.github.io/DevPortfolio/images/projects/modular-furniture-configurator/configurator-video.mp4\")",
+      "Bash(curl -s -I -H \"Range: bytes=0-1023\" \"https://yong753.github.io/DevPortfolio/images/projects/modular-furniture-configurator/configurator-video.mp4\")",
+      "Bash(curl -s -w \"content_length: %{size_download}\\\\nhttp_code: %{http_code}\\\\n\" -o /dev/null \"https://yong753.github.io/DevPortfolio/images/projects/modular-furniture-configurator/configurator-video.mp4\")",
+      "Bash(curl -s -o /tmp/test_video.mp4 \"https://yong753.github.io/DevPortfolio/images/projects/modular-furniture-configurator/configurator-video.mp4\")",
+      "Bash(ffprobe -v error -show_entries format=format_name,duration -show_entries stream=codec_name \"//tmp/test_video.mp4\")",
+      "Bash(curl -s -o /c/tmp_video.mp4 \"https://yong753.github.io/DevPortfolio/images/projects/modular-furniture-configurator/configurator-video.mp4\")",
+      "Bash(ffprobe -v error -show_entries format=format_name,duration -show_entries stream=codec_name /c/tmp_video.mp4)",
+      "Bash(curl -s -I -H \"Accept-Encoding: gzip, deflate, br\" \"https://yong753.github.io/DevPortfolio/images/projects/modular-furniture-configurator/configurator-video.mp4\")",
+      "Bash(curl -s -I \"https://yong753.github.io/DevPortfolio/projects/modular-furniture-configurator/\")",
+      "Bash(curl -s \"https://yong753.github.io/DevPortfolio/projects/modular-furniture-configurator/\")"
     ],
     "additionalDirectories": [
       "d:\\0.Development\\0.BuisenessAutomation\\0.DevPortfolio\\docs\\superpowers"
