@@ -32,10 +32,12 @@
       "Bash(ffprobe -v error -show_entries format=format_name,duration -show_entries stream=codec_name /c/tmp_video.mp4)",
       "Bash(curl -s -I -H \"Accept-Encoding: gzip, deflate, br\" \"https://yong753.github.io/DevPortfolio/images/projects/modular-furniture-configurator/configurator-video.mp4\")",
       "Bash(curl -s -I \"https://yong753.github.io/DevPortfolio/projects/modular-furniture-configurator/\")",
-      "Bash(curl -s \"https://yong753.github.io/DevPortfolio/projects/modular-furniture-configurator/\")"
+      "Bash(curl -s \"https://yong753.github.io/DevPortfolio/projects/modular-furniture-configurator/\")",
+      "Bash(xargs -I {} basename {} .md)"
     ],
     "additionalDirectories": [
-      "d:\\0.Development\\0.BuisenessAutomation\\0.DevPortfolio\\docs\\superpowers"
+      "d:\\0.Development\\0.BuisenessAutomation\\0.DevPortfolio\\docs\\superpowers",
+      "C:\\Users\\윤지용\\.claude"
     ]
   }
 }
