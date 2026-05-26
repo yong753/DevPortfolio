@@ -7,6 +7,7 @@ features: ["냉동 판넬 도면 자동 생성", "재료 낭비 최소화를 위
         , "BOM 자동 생성"]
 highlights: ["개발 기간: 3개월"]
 gallery: ["/DevPortfolio/images/projects/refrigeration-panel-drawing-generator/drawing-output.png"
-          ,"/DevPortfolio/images/projects/refrigeration-panel-drawing-generator/panel-layout.png"]
+          ,"/DevPortfolio/images/projects/refrigeration-panel-drawing-generator/panel-layout.png"
+          ,"/DevPortfolio/images/projects/refrigeration-panel-drawing-generator/PanelDrawingApp.mp4"]
 order: 6
 ---
