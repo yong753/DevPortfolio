@@ -6,7 +6,7 @@ techStack: ["BIM", "C#", ".NET Framework", "WinForms", "3D Modeling Automation"]
 features: ["PC콘크리트 부재 모델링", "철근 자동 생성", "하드웨어 자동 배치", "공통 Geometry 유틸리티"]
 highlights: ["대규모 BIM 애드인 개발", "C# 기반 자동화 모듈", "PC콘크리트 3D 모델링 업무 자동화"]
 gallery: ["/DevPortfolio/images/projects/bim-precast-design-automation/image1.png", "/DevPortfolio/images/projects/bim-precast-design-automation/image2.png"]
-order: 2
+order: 1
 overview:
   - label: "구분"
     value: "업무 자동화 프로젝트"

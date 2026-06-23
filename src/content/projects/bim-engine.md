@@ -6,7 +6,7 @@ techStack: ["Web BIM", "3D Viewer", "IFC", "Backend API", "C#", "TypeScript"]
 features: ["BIM 모델 웹 시각화", "층별 부재 목록", "부재 속성 확인", "산출서 매칭", "대용량 모델 업로드"]
 highlights: ["MVP 개발 종료", "단독 개발", "3D 모델과 산출서 검토 흐름 연결"]
 gallery: []
-order: 1
+order: 20
 overview:
   - label: "구분"
     value: "자체 프로젝트"
