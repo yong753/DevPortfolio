@@ -6,5 +6,5 @@ gallery: ["/DevPortfolio/images/projects/pc-concrete-3d-cad-engine/3d-modeling-v
 techStack: ["Unity", "C#"]
 features: ["PC 부재 3D 시각화", "매개변수 기반 3D 객체 생성", "3D 객체 직접 수정"]
 highlights: ["프로파일러 분석을 통한 드로우콜 최적화", "GPU 인스턴싱", "Edge 쉐이더 개발"]
-order: 1
+order: 12
 ---

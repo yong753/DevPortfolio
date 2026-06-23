@@ -15,6 +15,17 @@ const projects = defineCollection({
         githubUrl: z.string().url().optional(),
         liveUrl: z.string().url().optional(),
         order: z.number(),
+        overview: z.array(z.object({
+            label: z.string(),
+            value: z.string(),
+        })).optional(),
+        role: z.array(z.string()).optional(),
+        keyFeatures: z.array(z.object({
+            title: z.string(),
+            description: z.string(),
+            items: z.array(z.string()),
+        })).optional(),
+        results: z.array(z.string()).optional(),
     }),
 });
 

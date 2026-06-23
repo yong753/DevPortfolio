@@ -1,6 +1,17 @@
 ---
 import TechTag from "./TechTag.astro";
 
+interface OverviewItem {
+    label: string;
+    value: string;
+}
+
+interface KeyFeature {
+    title: string;
+    description: string;
+    items: string[];
+}
+
 interface Props {
     title: string;
     description: string;
@@ -11,9 +22,15 @@ interface Props {
     gallery: string[];
     githubUrl?: string;
     liveUrl?: string;
+    overview?: OverviewItem[];
+    role?: string[];
+    keyFeatures?: KeyFeature[];
+    results?: string[];
 }
 
-const { title, description, thumbnail, techStack, features, highlights, gallery, githubUrl, liveUrl } = Astro.props;
+const { title, description, thumbnail, techStack, features, highlights, gallery, githubUrl, liveUrl, overview, role, keyFeatures, results } = Astro.props;
+const hasStructuredContent = overview || role || keyFeatures || results;
+
 function isVideo(src: string): boolean {
     return /\.(mp4|webm|ogg)(\?.*)?$/i.test(src);
 }
@@ -33,22 +50,75 @@ function isVideo(src: string): boolean {
     <div class="info">
         <h1>{title}</h1>
         <p class="summary">{description}</p>
-        <div class="sections">
-            <div class="section">
-                <h2>주요 기능</h2>
-                <ul>
-                    {features.map(f => <li>{f}</li>)}
-                </ul>
+        {hasStructuredContent ? (
+            <div class="structured-sections">
+                {overview && overview.length > 0 && (
+                    <section class="content-section">
+                        <h2>프로젝트 개요</h2>
+                        <dl class="overview-grid">
+                            {overview.map(item => (
+                                <div class="overview-item">
+                                    <dt>{item.label}</dt>
+                                    <dd>{item.value}</dd>
+                                </div>
+                            ))}
+                        </dl>
+                    </section>
+                )}
+
+                {role && role.length > 0 && (
+                    <section class="content-section">
+                        <h2>담당 역할</h2>
+                        <ul class="simple-list">
+                            {role.map(item => <li>{item}</li>)}
+                        </ul>
+                    </section>
+                )}
+
+                {keyFeatures && keyFeatures.length > 0 && (
+                    <section class="content-section">
+                        <h2>주요 기능</h2>
+                        <div class="feature-grid">
+                            {keyFeatures.map(feature => (
+                                <article class="feature-card">
+                                    <h3>{feature.title}</h3>
+                                    <p>{feature.description}</p>
+                                    <ul>
+                                        {feature.items.map(item => <li>{item}</li>)}
+                                    </ul>
+                                </article>
+                            ))}
+                        </div>
+                    </section>
+                )}
+
+                {results && results.length > 0 && (
+                    <section class="content-section">
+                        <h2>성과</h2>
+                        <ul class="simple-list result-list">
+                            {results.map(item => <li>{item}</li>)}
+                        </ul>
+                    </section>
+                )}
             </div>
-            {highlights && highlights.length > 0 && (
+        ) : (
+            <div class="sections">
                 <div class="section">
-                    <h2>특징</h2>
+                    <h2>주요 기능</h2>
                     <ul>
-                        {highlights.map(h => <li>{h}</li>)}
+                        {features.map(f => <li>{f}</li>)}
                     </ul>
                 </div>
-            )}
-        </div>
+                {highlights && highlights.length > 0 && (
+                    <div class="section">
+                        <h2>특징</h2>
+                        <ul>
+                            {highlights.map(h => <li>{h}</li>)}
+                        </ul>
+                    </div>
+                )}
+            </div>
+        )}
         <div class="tags">
             {techStack.map(tech => <TechTag label={tech} />)}
         </div>
@@ -144,6 +214,123 @@ function isVideo(src: string): boolean {
         margin-top: 20px;
     }
 
+    .structured-sections {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        margin-top: 28px;
+    }
+
+    .content-section h2 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--accent-light);
+    }
+
+    .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin: 0;
+    }
+
+    .overview-item {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 14px 16px;
+    }
+
+    .overview-item dt {
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .overview-item dd {
+        color: var(--text-primary);
+        font-size: 0.92rem;
+        line-height: 1.55;
+        margin: 0;
+    }
+
+    .simple-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .simple-list li {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text-primary);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        padding: 10px 12px;
+    }
+
+    .result-list li {
+        border-color: transparent;
+        background: var(--accent-light);
+        color: var(--accent);
+        font-weight: 500;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .feature-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        padding: 18px;
+    }
+
+    .feature-card h3 {
+        color: var(--text-primary);
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+
+    .feature-card p {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.65;
+    }
+
+    .feature-card ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        list-style: none;
+        padding: 0;
+        margin: 14px 0 0;
+    }
+
+    .feature-card li {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        color: var(--text-primary);
+        font-size: 0.8rem;
+        line-height: 1.4;
+        padding: 5px 10px;
+    }
+
     .section {
         margin-bottom: 20px;
     }
@@ -219,6 +406,17 @@ function isVideo(src: string): boolean {
     @media (max-width: 600px) {
         .gallery {
             columns: 1;
+        }
+
+        .gallery img,
+        .gallery video {
+            max-width: 100%;
+        }
+
+        .overview-grid,
+        .simple-list,
+        .feature-grid {
+            grid-template-columns: 1fr;
         }
     }
 </style>
