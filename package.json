@@ -9,10 +9,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "screenshot": "node scripts/screenshot.mjs",
     "astro": "astro"
   },
   "dependencies": {
     "astro": "^6.1.5",
     "ffmpeg": "^0.0.4"
+  },
+  "devDependencies": {
+    "puppeteer": "^25.2.1"
   }
 }
