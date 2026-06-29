@@ -19,7 +19,7 @@
  */
 
 import puppeteer from 'puppeteer';
-import { spawn } from 'node:child_process';
+import { spawn, execSync } from 'node:child_process';
 import { readdir, mkdir } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -27,8 +27,6 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const SCREENSHOTS_DIR = resolve(ROOT, 'screenshots');
-
-const BASE_URL = 'http://localhost:4321/DevPortfolio';
 
 async function getSlugs() {
   const files = await readdir(resolve(ROOT, 'src/content/projects'));
@@ -52,9 +50,14 @@ function startPreviewServer() {
     proc.stdout.on('data', (data) => {
       const output = data.toString();
       console.log('[preview]', output.trim());
-      if (output.includes('Local') || output.includes('localhost')) {
+      const match = output.match(/https?:\/\/localhost:\d+\/\S*/i);
+      if (match) {
         clearTimeout(timeout);
-        setTimeout(() => resolve(proc), 1000);
+        proc.stdout.removeAllListeners();
+        proc.stderr.removeAllListeners();
+        proc.removeAllListeners('error');
+        const baseUrl = match[0].replace(/\/$/, '');
+        setTimeout(() => resolve({ proc, baseUrl }), 1000);
       }
     });
 
@@ -69,13 +72,13 @@ function startPreviewServer() {
   });
 }
 
-async function screenshotPages(browser, slugs) {
+async function screenshotPages(browser, slugs, baseUrl) {
   const page = await browser.newPage();
   await page.setViewport({ width: 1280, height: 800 });
 
   for (let i = 0; i < slugs.length; i++) {
     const slug = slugs[i];
-    const url = `http://localhost:4321/DevPortfolio/projects/${slug}/`;
+    const url = `${baseUrl}/projects/${slug}/`;
     const outputPath = resolve(SCREENSHOTS_DIR, `${slug}.png`);
 
     console.log(`[${i + 1}/${slugs.length}] Capturing: ${slug}`);
@@ -112,16 +115,17 @@ async function main() {
   console.log(`Found ${slugs.length} projects: ${slugs.join(', ')}`);
 
   console.log('Starting preview server...');
-  const serverProc = await startPreviewServer();
+  const { proc: serverProc, baseUrl } = await startPreviewServer();
 
   let browser;
   try {
     browser = await puppeteer.launch({ headless: 'new' });
-    await screenshotPages(browser, slugs);
+    await screenshotPages(browser, slugs, baseUrl);
     console.log(`\nDone! ${slugs.length} screenshots saved to screenshots/`);
   } finally {
     if (browser) await browser.close();
-    serverProc.kill();
+    try { execSync(`taskkill /pid ${serverProc.pid} /T /F 2>nul`, { stdio: 'ignore' }); } catch {}
+    setTimeout(() => process.exit(0), 100);
   }
 }
 
