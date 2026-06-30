@@ -8,7 +8,11 @@ const projects = await getCollection('projects');
 projects.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<BaseLayout frontmatter={{title: "Home", description: "Developer portfolio"}}>
+<BaseLayout frontmatter={{
+    title: "KC SOFTWARE — Development Portfolio",
+    description: "CAD·BIM automation, 3D simulation, GIS modeling — industrial software development portfolio",
+    image: "/DevPortfolio/images/og-default.png"
+}}>
 	<Hero />
 	<div class="divider"/>
 	<p class="portfolio">포트폴리오</p>

@@ -16,7 +16,7 @@ const { project } = Astro.props;
 const { title, description, thumbnail, techStack, features, highlights, gallery, githubUrl, liveUrl, overview, role, keyFeatures, results } = project.data;
 ---
 
-<BaseLayout frontmatter={{ title, description}}>
+<BaseLayout frontmatter={{ title, description, image: thumbnail }}>
     <ProjectDetail
         title={title}
         description={description}
