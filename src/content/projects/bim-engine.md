@@ -5,7 +5,7 @@ thumbnail: "/DevPortfolio/images/projects/bim-engine/image3.png"
 techStack: ["Web BIM", "3D Viewer", "IFC", "Backend API", "C#", "TypeScript"]
 features: ["BIM 모델 웹 시각화", "층별 부재 목록", "부재 속성 확인", "산출서 매칭", "대용량 모델 업로드"]
 highlights: ["MVP 개발 종료", "단독 개발", "3D 모델과 산출서 검토 흐름 연결"]
-gallery: ["/DevPortfolio/images/projects/bim-engine/image3.png", "/DevPortfolio/images/projects/bim-engine/image2.png", "/DevPortfolio/images/projects/bim-engine/image1.png", "/DevPortfolio/images/projects/bim-engine/video.png"]
+gallery: ["/DevPortfolio/images/projects/bim-engine/image3.png", "/DevPortfolio/images/projects/bim-engine/image2.png", "/DevPortfolio/images/projects/bim-engine/image1.png", "/DevPortfolio/images/projects/bim-engine/video.mp4"]
 order: 20
 overview:
   - label: "구분"
