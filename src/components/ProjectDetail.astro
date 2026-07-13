@@ -35,13 +35,24 @@ function isVideo(src: string): boolean {
     return /\.(mp4|webm|ogg)(\?.*)?$/i.test(src);
 }
 
+function isYoutube(src: string): boolean {
+    return /(youtube\.com|youtu\.be)/i.test(src);
+}
+
+function getYoutubeEmbedUrl(url: string): string {
+    const match = url.match(/(?:youtu\.be\/|v=)([\w-]+)/);
+    return match ? `https://www.youtube.com/embed/${match[1]}` : url;
+}
+
 ---
 
 <div class="detail">
     {gallery && gallery.length > 0 && (
         <div class={"gallery"}>
             {gallery.map((src, i) => 
-            isVideo(src)
+            isYoutube(src)
+            ? <iframe class="youtube-embed" src={getYoutubeEmbedUrl(src)} title={`${title} video ${i + 1}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            : isVideo(src)
             ? <video src={src} controls preload="auto" aria-label={`${title} video ${i + 1}`} />
             : <img src={src} alt={`${title} screenshot ${i + 1}`} />
         )}
@@ -189,6 +200,16 @@ function isVideo(src: string): boolean {
         margin-bottom: 12px;
         background: var(--bg-card);
         /* display: block; */
+    }
+
+    .gallery .youtube-embed {
+        height: 40vh;
+        max-width: 50%;
+        aspect-ratio: 16 / 9;
+        border-radius: 8px;
+        border: 2px solid var(--border);
+        margin-bottom: 12px;
+        background: var(--bg-card);
     }
 
     .info {
@@ -409,7 +430,8 @@ function isVideo(src: string): boolean {
         }
 
         .gallery img,
-        .gallery video {
+        .gallery video,
+        .gallery .youtube-embed {
             max-width: 100%;
         }
 
